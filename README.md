@@ -13,7 +13,15 @@ The Phonebook code challenge is a non-finished JAVA project that its name explai
 1. Enable the 'Add contact' functionality
 2. Enable the 'Search contact' functionality. Search must be enabled to be performed by any available criteria.
 3. List the existent contacts. 
-4. Create a DB or emulate it (do whatever to persist data, not in memory of course -_-)
+4. Create a DB (do whatever to persist data, not in memory of course -_-)
+
+### Presentation ###
+
+Attach a diagram to explain your solution. You may want to put it under /diagram folder
+
+### Notes ###
+
+1. Apply design patterns taking into account that the system must be scalable.
 
 ### Version ###
 
@@ -38,22 +46,12 @@ The Phonebook code challenge is a non-finished JAVA project that its name explai
 
 ### Database configuration ###
 
-- TBD
+- Use an RDB MS: Postgresql || SQLite || mySQL.
 
 ### How to run tests ###
 
 - Right click on the project
 - Run on server
-
-# BONUS #
-
-### Writing tests ###
-
-- If you want to perform some Unit Tests. Go ahead!
-
-# Code review #
-
-- Once you're done, we'll friendly ask you to walk us through your code to understand the details.
 
 # Who do I talk to? #
 
