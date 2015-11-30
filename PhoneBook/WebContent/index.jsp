@@ -11,12 +11,18 @@
 <body>
 	<div class="container">
 		<div class="pure-g">
-			<div class="pure-u-1"><p>Phonebook</p></div>
+			<div class="pure-u-1">
+				<div class="header">
+					<img class="logo" src="img/phonebook.png"/>
+					<p>v 1.0</p>
+				</div>
+				
+			</div>
 		</div>
 		<div class="pure-g">
 		    <div class="pure-u-sm-1 pure-u-1-3">
 		    	<div class="box">
-		    		<h2>New contact</h2>
+		    		<h2><i class="fa fa-user-plus"></i>New contact</h2>
 		    		<form class="pure-form">
 					    <fieldset class="pure-group">
 					        <input type="text" class="pure-input-1-2" placeholder="First Name">
@@ -30,7 +36,7 @@
 			</div>
 		    <div class="pure-u-sm-1 pure-u-1-3">
 				<div class="box">
-		    		<h2>Search contact</h2>
+		    		<h2><i class="fa fa-search"></i>Search contact</h2>
 		    		<form class="pure-form">
 		    			<fieldset class="pure-group">
 					    	<input type="text" class="pure-input-1-2">

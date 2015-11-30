@@ -3,6 +3,21 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
+	background: url(../img/background.jpg) no-repeat;
+	background-size: cover;
+	background-position: 0px 70px;
+}
+
+.logo {
+	width: 180px;
+    padding: 10px 15px 0px;
+}
+
+.header p {
+	position: absolute;
+    right: 60px;
+    top: 15px;
+    font: italic 14px 'Roboto';
 }
 
 .container {
@@ -24,7 +39,13 @@ body {
 }
 
 .box h2 {
+	font: bold 26px 'Roboto';
 	padding-top:30px;
+	color: #777;
+}
+
+.box h2 i {
+	color: #0078E7;
 }
 
 .pure-form .pure-group input {
