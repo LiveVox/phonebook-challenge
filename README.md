@@ -57,4 +57,4 @@ Attach a diagram to explain your solution. You may want to put it under /diagram
 
 ### Contact ###
 
-- We will notice when you're done with the project (Atlassian will let us know). But in case you want to make sure your project has been successfully delivered, send an e-mail to fvega@livevox.com notifying that your task is done.
+- Once you finish with the PhoneBook challenge, please let us know and send us an email to fvega@livevox.com with cc nposada@livevox.com
