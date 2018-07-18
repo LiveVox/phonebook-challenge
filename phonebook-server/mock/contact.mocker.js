@@ -1,7 +1,7 @@
 var mongojs = require("mongojs");
 var db = mongojs("contactManager", ["contacts"]);
 
-var limit = 1000;
+var limit = 5;
 
 var firstNames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Charles", "Joseph", "Thomas"];
 

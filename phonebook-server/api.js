@@ -47,6 +47,8 @@ function api (app) {
     });
 
     app.post("/api/contact", function (request, response) {
+        console.log(request);
+        console.log(request.body);
         db.contacts.insert(request.body, function (err, doc) {
             if (err) console.log("Error: " + err);
 

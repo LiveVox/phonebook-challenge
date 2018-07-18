@@ -6,7 +6,6 @@ const initialState = {
     error: null
 };
 
-// export default function productReducer(state = initialState, action) {
 export default (state = initialState, action) => {
     switch (action.type){
         case actionTypes.CREATE_NEW_CONTACT:
@@ -19,11 +18,12 @@ export default (state = initialState, action) => {
         case actionTypes.FETCH_CONTACTS_BEGIN:
             return {
               ...state,
-              loading: true,
+              loading: false,
               error: null
             };
       
         case actionTypes.FETCH_CONTACTS_SUCCESS:
+            initialState.items = action.payload.contacts;
             return {
               ...state,
               loading: false,
@@ -39,6 +39,13 @@ export default (state = initialState, action) => {
               loading: false,
               error: action.payload.error,
               items: []
+            };
+        case actionTypes.FILTER_CONTACTS:
+            let filteresContacts = initialState.items.filter(obj => Object.keys(obj).some(key => obj[key].toLowerCase().includes(action.searchValue.toLowerCase())));
+            return {
+                items: filteresContacts,
+                loading: false,
+                error: null
             };
         default:
             return state;

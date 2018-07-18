@@ -22,7 +22,8 @@ class ContactList extends React.Component {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>First name</th>
+            <th>Last name</th>
             <th>Phone</th>
           </tr>
         </thead>
@@ -30,6 +31,7 @@ class ContactList extends React.Component {
           {contacts.map((contact, id) =>
             <tr key={id}>
               <td>{contact.firstName}</td>
+              <td>{contact.lastName}</td>
               <td>{contact.phone}</td>
             </tr>
           )}

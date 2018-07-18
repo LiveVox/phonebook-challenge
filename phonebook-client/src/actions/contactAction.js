@@ -1,10 +1,36 @@
 import * as actionTypes from './actionTypes';
 
+export const fetchCreateContactSuccess = contact => ({
+    type: actionTypes.CREATE_NEW_CONTACT,
+    contact: contact
+});
+
 export const createContact = (contact) => {
-    return {
-      type: actionTypes.CREATE_NEW_CONTACT,
-      contact: contact
-    }
+    return dispatch => {
+      dispatch(fetchContactsBegin());
+      return fetch("http://localhost:3000/api/contact/", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contact)
+        })
+        .then(handleErrors)
+        .then(res => {
+          console.log(res);
+          dispatch(fetchCreateContactSuccess(contact));
+          return res;
+        })
+        .catch(error => dispatch(fetchContactsError(error)));
+    };
+};
+
+export const filterContacts = (searchValue) => {
+  return {
+    type: actionTypes.FILTER_CONTACTS,
+    searchValue: searchValue
+  }
 };
 
 export const fetchContactsBegin = () => ({
