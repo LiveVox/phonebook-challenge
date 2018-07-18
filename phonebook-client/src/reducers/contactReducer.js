@@ -9,8 +9,10 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type){
         case actionTypes.CREATE_NEW_CONTACT:
+            let contacts = [...state.items, Object.assign({}, action.contact)];
+            initialState.items = contacts;
             return {
-                items: [...state.items, Object.assign({}, action.contact)],
+                items: contacts,
                 loading: false,
                 error: null
             };

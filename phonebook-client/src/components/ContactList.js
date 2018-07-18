@@ -19,24 +19,25 @@ class ContactList extends React.Component {
     }
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map((contact, id) =>
-            <tr key={id}>
-              <td>{contact.firstName}</td>
-              <td>{contact.lastName}</td>
-              <td>{contact.phone}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <table className="pure-table">
+					    <thead>
+					        <tr>
+					            <th>First Name</th>
+					            <th>Last Name</th>
+					            <th>Phone</th>
+					        </tr>
+					    </thead>
+					
+					    <tbody>
+              {contacts.map((contact, id) =>
+                <tr key={id}>
+                  <td>{contact.firstName}</td>
+                  <td>{contact.lastName}</td>
+                  <td>{contact.phone}</td>
+                </tr>
+              )}
+					    </tbody>
+				</table>
     );
   }
 }

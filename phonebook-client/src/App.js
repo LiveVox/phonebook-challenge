@@ -17,8 +17,6 @@ class App extends Component {
 
   handleChangeSearch(e){
     let searchValue = e.target.value;
-    // let filteresContacts = this.props.contacts.filter(obj => Object.keys(obj).some(key => obj[key].includes(e.target.value)));
-    // console.log(this.props);
     this.props.filterContacts(searchValue);
   }
 
@@ -40,25 +38,54 @@ class App extends Component {
 
   render() {
     return(
-      <section className="container"> 
-        <h1>PhoneBook Challenge</h1>
-        <hr />
-        <div>
-          <h3>Search</h3>
-            <input type="text" name="search" onChange={this.handleChangeSearch.bind(this)} />
-        </div>
-        <div>
-          <h3>Add Contact</h3>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" name="firstName" onChange={this.handleChange.bind(this)} />
-            <input type="text" name="lastName" onChange={this.handleChange.bind(this)} />
-            <input type="text" name="phone" onChange={this.handleChange.bind(this)} />
-            <input type="submit" />
-          </form>
-        </div>
-        <hr />
-        <ContactList />
-      </section>
+  <div className="container">
+		<div className="pure-g">
+			<div className="pure-u-1">
+				<div className="header">
+					<img className="logo" src={require('./phonebook.png')}/>
+					<p>v 1.0</p>
+				</div>
+				
+			</div>
+		</div>
+		<div className="pure-g">
+		    <div className="pure-u-sm-1 pure-u-1-3">
+		    	<div className="box">
+		    		<h2><i className="fa fa-user-plus"></i>New contact</h2>
+		    		<form className="pure-form" onSubmit={this.handleSubmit}>
+					    <fieldset className="pure-group">
+					        <input type="text" className="pure-input-1-2" placeholder="First Name" name="firstName" onChange={this.handleChange.bind(this)} />
+					        <input type="text" className="pure-input-1-2" placeholder="Last Name" name="lastName" onChange={this.handleChange.bind(this)} />
+					        <input type="text" className="pure-input-1-2" placeholder="Phone" name="phone" onChange={this.handleChange.bind(this)} />
+					    </fieldset>
+					    <button type="submit" className="pure-button pure-input-1-2 pure-button-primary">
+					    <i className="fa fa-user-plus"></i>Add</button>
+					</form>
+				</div>
+			</div>
+		    <div className="pure-u-sm-1 pure-u-1-3">
+				<div className="box">
+		    		<h2><i className="fa fa-search"></i>Search contact</h2>
+		    		<form className="pure-form">
+		    			<fieldset className="pure-group">
+					    	<input type="text" className="pure-input-1-2" name="search" onChange={this.handleChangeSearch.bind(this)}/>
+					     </fieldset>
+					    <button type="submit" className="pure-button pure-input-1-2 pure-button-primary">
+					    <i className="fa fa-search"></i>Search</button>
+					</form>
+				</div>
+			</div>
+			<div className="pure-u-sm-1 pure-u-1-3">
+				<div className="box">
+		    		<h2><i className="fa fa-users"></i> Contacts</h2>
+            <ContactList />      
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+      
     )
   }
 }
