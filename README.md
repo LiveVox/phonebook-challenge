@@ -31,9 +31,9 @@ Attach a diagram to explain your solution. You may want to put it under /diagram
 
 ### Summary of set up ###
 
-1. Register into Atlassian (it's free)
+1. Register into Github (preferred) / Atlassian (optionally) (it's free)
 2. Fork the Phonebook project
-3. **Tip:** If you use Eclipse, you may want to search on Google something like: 'how to fork bitbucket project on eclipse'
+3. **Tip:** If you use Eclipse, you may want to search on Google something like: 'how to fork github/bitbucket project on eclipse'
 
 ### Configuration ###
 
