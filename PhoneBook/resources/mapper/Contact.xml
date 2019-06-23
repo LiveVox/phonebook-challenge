@@ -8,6 +8,21 @@
         SELECT ID, NAME, LASTNAME, PHONE FROM CONTACTS;
     </select>
 
+    <select id="findContact" resultMap="result">
+        SELECT ID, NAME, LASTNAME, PHONE FROM CONTACTS
+        WHERE
+        <foreach item="item" index="index" collection="list" separator="OR">
+            <bind name="joker" value="'%' + item + '%'" />
+            NAME LIKE #{joker} OR LASTNAME LIKE #{joker}
+        </foreach>
+        ;
+    </select>
+
+    <insert id="addContact" parameterType="co.com.liveBox.datamodel.vo.Contact">
+        INSERT INTO CONTACTS (ID, NAME, LASTNAME, PHONE)
+        VALUES (#{id, typeHandler=co.com.liveBox.datamodel.typehandlers.UUIDTypeHandler, javaType=java.util.UUID, jdbcType=VARCHAR},#{name},#{lastname},#{phone})
+    </insert>
+
     <resultMap id="result" type="co.com.liveBox.datamodel.vo.Contact">
         <result property="id" column="ID" typeHandler="co.com.liveBox.datamodel.typehandlers.UUIDTypeHandler"/>
         <result property="name" column="NAME"/>

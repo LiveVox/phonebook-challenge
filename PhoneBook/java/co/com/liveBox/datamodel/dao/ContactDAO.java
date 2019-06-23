@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ContactDAO {
-    private SqlSessionFactory sqlSessionFactory = null;
+    private SqlSessionFactory sqlSessionFactory;
     
     public ContactDAO(SqlSessionFactory sqlSessionFactory){
         this.sqlSessionFactory = sqlSessionFactory;
@@ -19,7 +19,7 @@ public class ContactDAO {
      * @return the list of all Contact instances from the database.
      */
     public List<Contact> selectAll(){
-        List<Contact> list = null;
+        List<Contact> list;
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
@@ -27,43 +27,40 @@ public class ContactDAO {
         } finally {
             session.close();
         }
-        System.out.println("selectAll() --> "+list);
         return list;
     }
 
     /**
      * Select instance of Contact from the database.
-     * @param name the instance to be persisted.
+     * @param keyWords the instance to be persisted.
      */
-        public Contact selectByname(String name){
-            Contact contact = null;
+        public List<Contact> findContact(List<String> keyWords){
+            List<Contact> list;
             SqlSession session = sqlSessionFactory.openSession();
             try {
-                name = session.selectOne("Contact.selectByname", name);
+                list = session.selectList("Contact.findContact", keyWords);
 
             } finally {
                 session.close();
             }
-            System.out.println("selectByname(" + name + ") --> " + name);
-            return contact;
+            return list;
     }
 
     /**
      * Insert an instance of Contact into the database.
      * @param contact the instance to be persisted.
      */
-    public int insert(Contact contact){
+    public int addContact(Contact contact){
         int rows = -1;
         contact.setId(UUID.randomUUID());
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
-            rows = session.insert("Contact.insert", contact);
+            rows = session.insert("Contact.addContact", contact);
         } finally {
             session.commit();
             session.close();
         }
-        System.out.println("insert(" + contact + ") --> " + contact.getId());
         return rows;
     }
 }
