@@ -50,12 +50,16 @@ public class ContactDAO {
      * Insert an instance of Contact into the database.
      * @param contact the instance to be persisted.
      */
-    public int addContact(Contact contact){
+    public int addContact(Contact contact) throws Exception{
         int rows = -1;
         contact.setId(UUID.randomUUID());
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
+            Contact duplicated = session.selectOne("Contact.findSpecific", contact);
+            if (duplicated.getId() != null){
+                throw new Exception("The contact already exists");
+            }
             rows = session.insert("Contact.addContact", contact);
         } finally {
             session.commit();

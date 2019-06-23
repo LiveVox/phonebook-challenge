@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @Path("contactManager")
 public class ContactManager {
@@ -36,7 +37,25 @@ public class ContactManager {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addContact(Contact contact) {
-        ContactDAO contactDAO = new ContactDAO(MyBatisConnectionFactory.getSqlSessionFactory());
-        return Response.ok(contactDAO.addContact(contact)).build();
+        try {
+            validateContact(contact);
+            ContactDAO contactDAO = new ContactDAO(MyBatisConnectionFactory.getSqlSessionFactory());
+            return Response.ok(contactDAO.addContact(contact)).build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.CONFLICT).entity(e.getMessage()).build();
+        }
+    }
+
+    private void validateContact(Contact contact) {
+        Optional.ofNullable(contact)
+                .orElseThrow(() -> new IllegalArgumentException("Contact must not be empty"));
+        Optional.ofNullable(contact.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Contact's name must not be empty"));
+        Optional.ofNullable(contact.getLastname())
+                .orElseThrow(() -> new IllegalArgumentException("Contact's lastname must not be empty"));
+        Optional.ofNullable(contact.getPhone())
+                .orElseThrow(() -> new IllegalArgumentException("Contact's phone must not be empty"));
     }
 }

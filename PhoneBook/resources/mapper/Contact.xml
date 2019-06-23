@@ -18,6 +18,11 @@
         ;
     </select>
 
+    <select id="findSpecific" resultMap="result" parameterType="co.com.liveBox.datamodel.vo.Contact">
+        SELECT ID, NAME, LASTNAME, PHONE FROM CONTACTS
+        WHERE NAME = #{name} AND LASTNAME = #{lastname} AND PHONE = #{phone};
+    </select>
+
     <insert id="addContact" parameterType="co.com.liveBox.datamodel.vo.Contact">
         INSERT INTO CONTACTS (ID, NAME, LASTNAME, PHONE)
         VALUES (#{id, typeHandler=co.com.liveBox.datamodel.typehandlers.UUIDTypeHandler, javaType=java.util.UUID, jdbcType=VARCHAR},#{name},#{lastname},#{phone})
