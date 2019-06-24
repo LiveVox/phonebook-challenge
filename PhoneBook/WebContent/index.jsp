@@ -53,7 +53,8 @@
 			<div class="pure-u-sm-1 pure-u-1-3">
 				<div class="box">
 		    		<h2><i class="fa fa-users"></i> Contacts</h2>
-	    			<table class="pure-table" style="overflow:scroll; height:100px;">
+					<div  style="overflow:scroll; height:200px;">
+	    			<table class="pure-table">
 					    <thead>
 					        <tr>
 					            <th>First Name</th>
@@ -64,6 +65,7 @@
 
 					    <tbody id="contactTable"></tbody>
 					</table>
+					</div>
 				</div>
 			</div>
 		</div>
