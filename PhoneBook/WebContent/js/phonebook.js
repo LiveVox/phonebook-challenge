@@ -4,7 +4,7 @@ const newContact = {
     phone: null
 };
 
-const contact = newContact;
+let contact = {...newContact};
 
 
 function loadContacts(){
@@ -25,6 +25,7 @@ function addContact(){
         contentType: 'application/json',
         data: JSON.stringify(contact),
         success: (response) => {
+			clearAddForm();
 			loadContacts();
 		},
         error: (response) => {
@@ -42,6 +43,7 @@ function searchContact(keyWords){
 		type: 'GET',
         success: (response) => {
 			$("#contactTable tr").remove();
+			$('#keyWord').val('');
 			renderContacts(response);
 		},
         error: (response) => {
@@ -55,7 +57,7 @@ function setContact(field, value) {
 }
 
 function renderContacts(response){
-	
+
 	let contactTable = '';
 	response.forEach(item => {
 		contactTable += '<tr>'
@@ -65,4 +67,11 @@ function renderContacts(response){
 		contactTable += '</tr>';
 	});
 	$("#contactTable").append(contactTable);
+}
+
+function clearAddForm() {
+	$('#name').val('');
+	$('#lastname').val('');
+	$('#phone').val('');
+	contact = {...newContact};
 }

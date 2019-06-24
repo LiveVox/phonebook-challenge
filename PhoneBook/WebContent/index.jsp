@@ -28,9 +28,9 @@
 		    		<h2><i class="fa fa-user-plus"></i>New contact</h2>
 		    		<form class="pure-form">
 					    <fieldset class="pure-group">
-					        <input type="text" class="pure-input-1-2" placeholder="First Name" onchange="setContact('name',this.value)" required>
-					        <input type="text" class="pure-input-1-2" placeholder="Last Name" onchange="setContact('lastname',this.value)" required>
-					        <input type="tel" class="pure-input-1-2" placeholder="Phone" onchange="setContact('phone',this.value)" required maxlength=15>
+					        <input type="text" class="pure-input-1-2" placeholder="First Name" onchange="setContact('name',this.value)" required id="name">
+					        <input type="text" class="pure-input-1-2" placeholder="Last Name" onchange="setContact('lastname',this.value)" required id="lastname">
+					        <input type="tel" class="pure-input-1-2" placeholder="Phone" onchange="setContact('phone',this.value)" required maxlength=15 id="phone">
 					    </fieldset>
 					    <button type="button" onclick="addContact();" class="pure-button pure-input-1-2 pure-button-primary">
 					    	<i class="fa fa-user-plus"></i>Add
