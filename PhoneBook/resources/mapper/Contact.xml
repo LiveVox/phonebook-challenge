@@ -11,9 +11,8 @@
     <select id="findContact" resultMap="result">
         SELECT ID, NAME, LASTNAME, PHONE FROM CONTACTS
         WHERE
-        <foreach item="item" index="index" collection="list" separator="OR">
-            <bind name="joker" value="'%' + item + '%'" />
-            NAME LIKE #{joker} OR LASTNAME LIKE #{joker}
+        <foreach item="item" collection="list" separator="OR">
+            NAME LIKE #{item} OR LASTNAME LIKE #{item}
         </foreach>
         ;
     </select>

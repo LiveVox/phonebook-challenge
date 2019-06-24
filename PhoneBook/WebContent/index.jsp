@@ -7,8 +7,11 @@
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/styles.css">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="./js/phonebook.js"></script>
 </head>
-<body>
+<body onload="loadContacts();">
 	<div class="container">
 		<div class="pure-g">
 			<div class="pure-u-1">
@@ -16,7 +19,7 @@
 					<img class="logo" src="img/phonebook.png"/>
 					<p>v 1.0</p>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="pure-g">
@@ -25,12 +28,13 @@
 		    		<h2><i class="fa fa-user-plus"></i>New contact</h2>
 		    		<form class="pure-form">
 					    <fieldset class="pure-group">
-					        <input type="text" class="pure-input-1-2" placeholder="First Name">
-					        <input type="text" class="pure-input-1-2" placeholder="Last Name">
-					        <input type="email" class="pure-input-1-2" placeholder="Phone">
+					        <input type="text" class="pure-input-1-2" placeholder="First Name" onchange="setContact('name',this.value)" required>
+					        <input type="text" class="pure-input-1-2" placeholder="Last Name" onchange="setContact('lastname',this.value)" required>
+					        <input type="tel" class="pure-input-1-2" placeholder="Phone" onchange="setContact('phone',this.value)" required maxlength=15>
 					    </fieldset>
-					    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">
-					    <i class="fa fa-user-plus"></i>Add</button>
+					    <button type="button" onclick="addContact();" class="pure-button pure-input-1-2 pure-button-primary">
+					    	<i class="fa fa-user-plus"></i>Add
+						</button>
 					</form>
 				</div>
 			</div>
@@ -39,9 +43,9 @@
 		    		<h2><i class="fa fa-search"></i>Search contact</h2>
 		    		<form class="pure-form">
 		    			<fieldset class="pure-group">
-					    	<input type="text" class="pure-input-1-2">
+					    	<input type="text" class="pure-input-1-2" id="keyWord" required>
 					     </fieldset>
-					    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">
+					    <button type="button" onclick="searchContact($('#keyWord').val());" class="pure-button pure-input-1-2 pure-button-primary">
 					    <i class="fa fa-search"></i>Search</button>
 					</form>
 				</div>
@@ -49,7 +53,7 @@
 			<div class="pure-u-sm-1 pure-u-1-3">
 				<div class="box">
 		    		<h2><i class="fa fa-users"></i> Contacts</h2>
-	    			<table class="pure-table">
+	    			<table class="pure-table" style="overflow:scroll; height:100px;">
 					    <thead>
 					        <tr>
 					            <th>First Name</th>
@@ -57,26 +61,8 @@
 					            <th>Phone</th>
 					        </tr>
 					    </thead>
-					
-					    <tbody>
-					        <tr>
-					            <td>Arun</td>
-					            <td>Kart</td>
-					            <td>415-8679089</td>
-					        </tr>
-					
-					        <tr>
-					            <td>Juan</td>
-					            <td>Torus</td>
-					            <td>301-2390930</td>
-					        </tr>
-					
-					        <tr>
-					            <td>Nolux</td>
-					            <td>Fernandez</td>
-					            <td>310-2930291</td>
-					        </tr>
-					    </tbody>
+
+					    <tbody id="contactTable"></tbody>
 					</table>
 				</div>
 			</div>

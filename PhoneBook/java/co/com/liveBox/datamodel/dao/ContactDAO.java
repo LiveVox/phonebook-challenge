@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ContactDAO {
     private SqlSessionFactory sqlSessionFactory;
@@ -37,8 +38,9 @@ public class ContactDAO {
         public List<Contact> findContact(List<String> keyWords){
             List<Contact> list;
             SqlSession session = sqlSessionFactory.openSession();
+            List<String> formattedKeyWords = keyWords.stream().map(item -> "%" + item + "%").collect(Collectors.toList());
             try {
-                list = session.selectList("Contact.findContact", keyWords);
+                list = session.selectList("Contact.findContact", formattedKeyWords);
 
             } finally {
                 session.close();
@@ -57,7 +59,7 @@ public class ContactDAO {
 
         try {
             Contact duplicated = session.selectOne("Contact.findSpecific", contact);
-            if (duplicated.getId() != null){
+            if (duplicated != null){
                 throw new Exception("The contact already exists");
             }
             rows = session.insert("Contact.addContact", contact);
