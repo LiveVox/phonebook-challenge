@@ -31,9 +31,9 @@ body {
 
 .box {
 	width:350px;
-	height:300px;
+	min-height:300px;
 	margin: 0 auto;
-	padding: 0px 10px;
+	padding: 0px 10px 10px;
 	background-color: #eee;
 	border-radius:4px;
 }
@@ -67,4 +67,11 @@ body {
 
 .fa {
 	padding-right:10px;
+}
+
+.error {
+	font-size:12px;
+	color: red;
+	text-align: left;
+	display: block;
 }

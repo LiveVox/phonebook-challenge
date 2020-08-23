@@ -1,1 +1,8 @@
 Add a diagram in jpg, png format within this path.
+
+There are additional configuration pending to complete:
+
+1.- Set default pages for 500, 404 errors
+2.- In theory the pagination is implemented in the backend side (needs testing) but not in the UI. The app only shows the first 100 rows.
+3.- In this project I tried to use only Java technology.
+4.- Other approach to implement this solution is the creation of API Rest services that can be used in this web site or in another technology like React, Angular or mobile apps.
