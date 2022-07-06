@@ -57,4 +57,4 @@ Attach a diagram to explain your solution. You may want to put it under /diagram
 
 ### Contact ###
 
-- Once you finish with the PhoneBook challenge, please let us know and send us an email to gvillegas@livevox.com with cc nposada@livevox.com
+- Once you finish with the PhoneBook challenge, please let us know and send us an email to abossi@livevox.com
